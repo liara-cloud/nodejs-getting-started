@@ -1,10 +1,11 @@
 var express = require("express");
 var morgan = require("morgan");
-var mysql = require("mysql");
 var app = express();
 var path = require("path");
+var mysql = require("mysql");
 const MongoClient = require("mongodb").MongoClient;
 const mongoDSN = process.env.MONGO_DSN;
+const LIARA_URL = process.env.LIARA_URL || "localhost";
 
 app.use(morgan("tiny"));
 app.use(express.static("public"));
@@ -37,5 +38,5 @@ app.get("/", function (req, res) {
 // });
 
 app.listen(8000, () =>
-  console.log(`app listening on port 8000 on ${process.env.URL}`)
+  console.log(`app listening on port 8000 on ${LIARA_URL}`)
 );
