@@ -1,6 +1,6 @@
-var express = require("express");
-var app = express();
-var path = require("path");
+const express = require("express");
+const app = express();
+const path = require("path");
 const LIARA_URL = process.env.LIARA_URL || "localhost";
 
 app.use(express.static("public"));
