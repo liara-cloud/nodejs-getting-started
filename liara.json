@@ -1,4 +1,10 @@
 {
     "platform": "node",
-    "port": 3005
+    "port": 3005,
+    "disks": [
+        {
+            "name": "disk",
+            "mountTo": "uploads"
+        }
+    ]
 }
