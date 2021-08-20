@@ -1,16 +1,4 @@
 {
   "platform": "node",
-  "app": "nodejs-starter",
-  "port": 8000,
-  "node": {
-    "version": "12",
-    "timezone": "America/Los_Angeles",
-    "npmAudit": true
-  },
-  "disks": [
-    {
-      "name": "disk1",
-      "mountTo": "files"
-    }
-  ]
+  "port": 3005
 }

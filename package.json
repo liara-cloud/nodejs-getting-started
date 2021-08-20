@@ -1,17 +1,13 @@
 {
-  "name": "liara-cd-example",
+  "name": "node-getting-started",
   "version": "1.0.0",
   "description": "simple web server with expressjs",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "amirbagh75",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongodb": "^3.5.8",
-    "morgan": "^1.9.1",
-    "mysql": "github:mysqljs/mysql"
+    "express": "^4.17.1"
   }
 }

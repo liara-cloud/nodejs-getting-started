@@ -1,17 +1,23 @@
-# NodeJS getting started
+# Node apps getting started
 
-Example of how running NodeJS projects on Liara.
+Example of how deploy a simple Node project on [liara](https://liara.ir).
 
-Read more on Liara docs: https://docs.liara.ir/app-deploy/nodejs/getting-started
+## Deploying
 
+[Create New Node App](https://console.liara.ir/apps/create) & install the [Liara CLI](https://docs.liara.ir/cli/install)
 
-## Running Locally
+```bash
+$ git clone https://github.com/liara-cloud/nodejs-getting-started.git # or clone your own fork
 
-Make sure you have [NodeJS](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/)
+$ cd node-getting-started
 
-```sh
-git clone https://github.com/liara-cloud/nodejs-getting-started
-cd nodejs-getting-started
-npm install
-npm start
+$ liara deploy
 ```
+## Availabe Branches
+
+1.  [Adding liara.json file](https://github.com/liara-cloud/nodejs-getting-started/tree/liaraJson)
+2.  [Disk setup](https://github.com/liara-cloud/nodejs-getting-started/tree/diskSetup)
+
+
+## Documentation
+Read more on liara [Node apps documentation](https://docs.liara.ir/app-deploy/nodejs/getting-started)
