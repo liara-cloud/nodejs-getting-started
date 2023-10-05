@@ -17,7 +17,9 @@ $ liara deploy
 
 1.  [Adding liara.json file](https://github.com/liara-cloud/nodejs-getting-started/tree/liaraJson)
 2.  [Disk setup](https://github.com/liara-cloud/nodejs-getting-started/tree/diskSetup)
-
+3.  [Email Server in Liara](https://github.com/liara-cloud/nodejs-getting-started/tree/email-server)
+4.  [Oject Srorage in Liara](https://github.com/liara-cloud/nodejs-getting-started/tree/object-storage)
+5.  [Headless Chrome Puppeteer](https://github.com/liara-cloud/nodejs-getting-started/tree/headless-chrome-puppeteer)
 
 ## Documentation
 Read more on liara [Node apps documentation](https://docs.liara.ir/app-deploy/nodejs/getting-started)
