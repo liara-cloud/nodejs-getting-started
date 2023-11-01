@@ -8,10 +8,9 @@ const nodemailer = require("nodemailer");
 const multer = require('multer');
 require('dotenv').config();
 
-// اتصال به پایگاه داده
-mongoose.connect("mongodb://root:wiTFSsLYSoi9Pqz0NsLXypN1@grace.iran.liara.ir:32063/my-app?authSource=admin");
+// CONNECT TO DB
+mongoose.connect(process.env.MONGOOSE_URI,);
 
-// تعریف schema و model برای پست‌ها
 const postSchema = mongoose.Schema({
   title: {
     type: String,
@@ -21,23 +20,17 @@ const postSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  image: String // اضافه کردن فیلد تصویر
+  image: String 
 });
 
 const Post = mongoose.model('Post', postSchema);
-
 const app = express();
-
 let isLoggedIn = false;
 
-// تنظیمات مربوط به موتور مشاهده‌گر
 app.set('view engine', 'ejs');
-
-// استفاده از bodyParser و فایل‌های استاتیک
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// تنظیمات آپلود تصاویر با استفاده از Multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/uploads/');
@@ -49,12 +42,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// محتوای صفحات
+// PAGE CONTENT
 const homeContent = "This is Liara Blog Which is Built For Learning And Doing Some Stuff";
 const aboutContent = "This Blog Website is created with the help of Node.js and Database MongoDB. Other Technologies used are: Expressjs, EJS and Mongoose.";
 const contactContent = "";
 
-// روت اصلی
+// MAIN ROOT 
 app.get("/", function (req, res) {
   Post.find({}, function (err, result) {
     if (!err) {
@@ -63,7 +56,7 @@ app.get("/", function (req, res) {
   });
 });
 
-// روت‌های دیگر
+// OTHER ROOTS
 app.get("/about", function (req, res) {
   res.render("about", { aboutContent: aboutContent });
 });
@@ -150,11 +143,11 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
-// تنظیمات ارسال ایمیل
-const MAIL_HOST = "smtp.c1.liara.email";
-const MAIL_PORT = 587;
-const MAIL_USER = "musing_black_uqa9od";
-const MAIL_PASSWORD = "829162f2-0ef5-402e-9be2-19c7b978ef30";
+// SENDING EMAIL CONF
+const MAIL_HOST     = process.env.MAIL_HOST;
+const MAIL_PORT     = process.env.MAIL_PORT;
+const MAIL_USER     = process.env.MAIL_USER;
+const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 
 const transporter = nodemailer.createTransport({
   host: MAIL_HOST,
@@ -177,10 +170,10 @@ app.post("/signup", function (req, res) {
   });
 
   transporter.sendMail({
-    from: 'welcome@alinajmabadi.ir',
+    from: process.env.MAIL_FROM,
     to: email,
-    subject: 'Test Email Subject',
-    html: '<h1>Example HTML Message Body</h1>'
+    subject: 'Welcome to Liara Blog',
+    html: '<h1>So Happy To See You As A Member In Our Blog :)</h1>'
   })
   .then(() => console.log('OK, Email has been sent.'))
   .catch(console.error);
@@ -200,18 +193,15 @@ app.post("/signup", function (req, res) {
 app.post("/login", function (req, res) {
   const { username, password } = req.body;
 
-  // یافتن کاربر با نام کاربری در پایگاه داده
   User.findOne({ username: username }, function(err, foundUser) {
     if (err) {
       console.error(err);
-      res.redirect("/error"); // در صورت خطا می‌توانید به یک صفحه خطا هدایت کنید
+      res.redirect("/error"); 
     } else {
       if (foundUser && foundUser.password === password) {
-        // اگر کاربر پیدا شد و رمز عبور مطابقت داشت
         isLoggedIn = true;
         res.redirect("/compose");
       } else {
-        // اگر کاربر پیدا نشد یا رمز عبور مطابقت نداشت
         res.redirect("/login");
       }
     }
