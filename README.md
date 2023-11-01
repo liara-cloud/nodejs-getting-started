@@ -13,10 +13,12 @@
 ```bash
   git checkout blog
 ```
+
 ```bash
   cp .env.example .env
 ```
-- if you're using windows, just rename .env.example to .evn
+- if you're using windows, just rename .env.example to .env
+- configure your environment variables
 ```bash
   npm install
 ```
