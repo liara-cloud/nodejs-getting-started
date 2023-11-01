@@ -1,0 +1,12 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/post.css">
+<div class="container">
+  <article>
+    <h1><%= title %></h1>
+    <p><%= content %></p>
+    <% if (imageUrl) { %>
+      <img src="<%= imageUrl %>" alt="Post Image">
+    <% } %>
+  </article>
+</div>
+<%- include("partials/footer"); -%>

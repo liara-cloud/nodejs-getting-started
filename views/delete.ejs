@@ -1,0 +1,48 @@
+<%- include("partials/header"); -%>
+
+<style>
+  .post-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .post-delete {
+    display: flex;
+    align-items: center;
+  }
+
+  .deletePostList {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .post-delete-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+</style>
+
+<h1>Post List</h1>
+<ul class="post-list">
+  <% posts.forEach(function(post){ %>
+  <form action="/delete" method="post">
+    <div class="post-delete">
+      <li class="deletePostList"><%= post.title %></li>
+      <button class="post-delete-button" type="submit" name="deleteButton" value="<%= post._id %>">
+        <i class="fa fa-trash-o"></i>
+      </button>
+    </div>
+  </form>
+  <% }) %>
+</ul>
+
+<%- include("partials/footer"); -%>

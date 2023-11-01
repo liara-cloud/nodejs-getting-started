@@ -1,0 +1,23 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/contact_us.css">
+<div class="container">
+  <h1>Home</h1>
+  <p><%= startingContent %></p>
+
+  <%  posts.forEach(function(post){ %>
+
+    <div class="post">
+      <h2><%= post.title %></h2>
+      <p>
+        <% if (post.content.length <= 100) { %>
+          <%= post.content + "  "%>
+        <% } else {%>
+          <%= post.content.substring(0, 100) + " ..."%>
+        <% } %>
+        <a class="read-more-button" href="/posts/<%= post._id %>">Read More</a>
+      </p>
+    </div>
+    
+  <% }) %>
+</div>
+<%- include("partials/footer"); -%>

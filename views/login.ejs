@@ -1,0 +1,11 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/contact_us.css">
+<div class="container">
+  <h1>Login to Your Account</h1>
+  <form class="contact-form" action="/login" method="post">
+    <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
+    <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
+    <button type="submit">Login</button>
+  </form>
+</div>
+<%- include("partials/footer"); -%>

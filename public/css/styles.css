@@ -1,0 +1,81 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+.fa-github{
+  font-size: 25px;
+  color: black;
+}
+
+.fa-linkedin{
+  font-size: 25px;
+  color: #026EAA;
+}
+
+.title{
+  text-decoration: none;
+}
+.title:hover{
+  text-decoration: none;
+}
+
+.deletePostList{
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.post-delete{
+  display:flex;
+  align-items: center;
+}
+
+.post-delete-button{
+  border:none;
+  background-color: transparent;
+  color: rgb(20, 20, 20);
+  font-size: 25px;
+  margin-left: 15px;
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+
+.footer-container {
+  text-align: center;
+}
+
+.footer-padding {
+  height: 20px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  height: 80px;
+}
+
+.footer a {
+  margin: 0 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

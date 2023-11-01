@@ -1,0 +1,13 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/contact_us.css">
+<div class="container">
+  <h1>Contact</h1>
+  <p> <%= contactContent %> </p>
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+<%- include("partials/footer"); -%>

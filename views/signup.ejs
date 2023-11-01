@@ -1,0 +1,14 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/contact_us.css">
+<div class="container">
+  <h1>Sign Up for an Account</h1>
+  <form class="contact-form" action="/signup" method="post">
+    <input type="text" id="name" name="name" placeholder="Full Name" required autocomplete="off">
+    <input type="email" id="email" name="email" placeholder="Email" required autocomplete="off">
+    <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
+    <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
+    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required autocomplete="off">
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+<%- include("partials/footer"); -%>
