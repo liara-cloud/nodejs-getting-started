@@ -4,7 +4,7 @@
 ## Installation
 
 
-```bash
+  ```bash
   git clone https://github.com/liara-cloud/nodejs-getting-started.git
 ```
 ```bash
@@ -13,6 +13,10 @@
 ```bash
   git checkout blog
 ```
+```bash
+  cp .env.example .env
+```
+- if you're using windows, just rename .env.example to .evn
 ```bash
   npm install
 ```
