@@ -25,3 +25,13 @@
 ```bash
   node app.js
 ```
+## First Look of Blog:
+<img src="https://files.liara.ir/liara/nodejs/cource/first-look-of-nodejs-liara-blog.png" alt="Alt text" title="Optional title">
+
+## Blog Features
+
+- Adding posts with images 
+- Logging in & Signing up
+- Sending Email to new users
+- Upload Images Using S3 Access
+
