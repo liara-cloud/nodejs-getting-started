@@ -1,37 +1,33 @@
-const express = require("express");
-const multer = require("multer");
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
 const app = express();
-const path = require("path");
-const LIARA_URL = process.env.LIARA_URL || "localhost";
-const { listFiles } = require('./util');
+const port = 3000;
 
-app.use(express.static("public"));
-app.set('view engine', 'ejs');
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (_, __, cb) => cb(null, './uploads'),
-    filename: (_, file, cb) => cb(null, file.originalname),
-  })
+const storage = multer.diskStorage({
+  destination: 'uploads/',
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
 });
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname + "/index.html"));
+const upload = multer({ storage: storage });
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html'); 
 });
 
-app.get("/upload", async function (req, res) {
-  const files = await listFiles('./uploads');
-  res.render('upload', { files })
+app.post('/upload', upload.single('myFile'), (req, res) => {
+  const uploadedFile = req.file;
+  const downloadLink = `${req.protocol}://${req.get('host')}/uploads/${uploadedFile.filename}`;
+
+  res.send(`file uploaded successfully. <br> link: <a href="${downloadLink}">${uploadedFile.filename}</a>`);
 });
 
-app.post('/upload', upload.single('file'), function (req, res) {
-  res.redirect('/upload');
-});
+app.use('/uploads', express.static('uploads'));
 
-app.get('/download/:file', function (req, res) {
-  res.download(`./uploads/${req.params.file}`);
+// شروع سرور
+app.listen(port, () => {
+  console.log(`server is running on localhost:${port}`);
 });
-
-app.listen(3005, () =>
-  console.log(`app listening on port 3005 on ${LIARA_URL}`)
-);

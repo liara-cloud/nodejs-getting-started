@@ -1,24 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deployed to Liara</title>
-  <link rel="shortcut icon" href="images/favicon.ico" />
-  <link href="css/app.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #495057;
+        }
 
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 500px;
+            max-width: 90%;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        label:hover {
+            background-color: #0056b3;
+        }
+
+        #fileName {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #495057;
+        }
+
+        #result {
+            margin-top: 30px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        #result.error {
+            color: #dc3545;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
-  <h1>
-    Hooray!
-  </h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <h1>Upload Image</h1>
+        <input type="file" name="myFile" id="fileInput" required>
+        <label for="fileInput">Choose File</label>
+        <span id="fileName">No file chosen</span>
+        <button type="button" onclick="uploadFile()">Upload</button>
+        <div id="result"></div>
+    </form>
 
-  <canvas id="drawing_canvas"></canvas>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function() {
+            document.getElementById('fileName').textContent = this.files[0].name;
+        });
 
-  <script type="text/javascript" src="js/app.js"></script>
+        function uploadFile() {
+            var formData = new FormData(document.getElementById('uploadForm'));
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById('result').className = '';
+                        document.getElementById('result').innerHTML = xhr.responseText;
+                    } else {
+                        document.getElementById('result').className = 'error';
+                        document.getElementById('result').innerHTML = 'Error: ' + xhr.statusText;
+                    }
+                }
+            };
+
+            xhr.open('POST', '/upload', true);
+            xhr.send(formData);
+        }
+    </script>
 </body>
-
 </html>

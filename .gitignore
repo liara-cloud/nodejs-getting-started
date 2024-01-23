@@ -1,1 +1,18 @@
+# node_modules directory should be ignored
 node_modules/
+
+# log files and backups
+*.log
+*.backup
+
+# dotenv environment variable file
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
