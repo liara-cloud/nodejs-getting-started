@@ -1,0 +1,9 @@
+{
+    "disks":[
+        {
+            "name": "", 
+            "mountTo": "uploads"
+        }
+    ],
+    "port": 3000
+}
