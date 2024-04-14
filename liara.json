@@ -1,0 +1,8 @@
+{
+    "disks":[
+        {
+            "name": "prisma",
+            "mountTo": "prisma/migrations"
+        }
+    ]
+}
