@@ -54,17 +54,23 @@
                 // Handle incoming messages
                 ws.onmessage = function (message) {
                     const msgDiv = document.createElement('div');
-                    msgDiv.classList.add('msgCtn');
                     if (message.data instanceof Blob) {
+                        // Handling Blob data
                         reader = new FileReader();
                         reader.onload = () => {
                             msgDiv.innerHTML = reader.result;
+                            msgDiv.classList.add('msgCtn'); // Adding class for user's messages
                             document.getElementById('messages').appendChild(msgDiv);
                         };
                         reader.readAsText(message.data);
                     } else {
-                        console.log("Result2: " + message.data);
+                        // Handling text data
                         msgDiv.innerHTML = message.data;
+                        if (message.sender === 'user') { // Assuming 'user' is the sender's identifier
+                            msgDiv.classList.add('msgCtn'); // Adding class for user's messages
+                        } else {
+                            msgDiv.classList.add('otherMsgCtn'); // Adding class for other users' messages
+                        }
                         document.getElementById('messages').appendChild(msgDiv);
                     }
                 };

@@ -1,156 +1,114 @@
-/* Font styles */
+/* Font Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    color: #fff; /* White text color for dark mode */
-    background-color: #333; /* Dark background color for dark mode */
+    color: #333;
+    background-color: #f7f7f7; /* Light background color */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* Style for username input page */
-#usernameForm {
+/* Color Scheme */
+:root {
+    --primary-color: #364be5; /* Primary blue color */
+    --secondary-color: #ff6f61; /* Secondary color */
+    --accent-color: #ffc93c; /* Accent color */
+}
+
+/* Form Styles */
+#usernameForm, #chatContainer, .msgForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10rem;
-    animation: fade-in 0.5s ease-in-out;
 }
 
-#usernameForm label {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-#usernameForm input {
+/* Input Fields and Buttons */
+input, textarea, button {
     padding: 1rem;
     font-size: 1.6rem;
     border-radius: 5px;
-    border: 1px solid #364be5; /* blueviolet */
-    margin-bottom: 2rem; /* Increased margin bottom */
-    background-color: #444; /* Darker background for input in dark mode */
-    color: #fff; /* White text color for input in dark mode */
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    background-color: #fff; /* White background for inputs */
+    color: #333;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#usernameForm button {
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #f0f0f0; /* Light gray on focus */
+}
+
+button {
     padding: 1rem 2rem;
-    font-size: 1.6rem;
-    border-radius: 5px;
-    background-color: #364be5; /* blueviolet */
-    color: #fff; /* White text color for button */
     border: none;
     cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#usernameForm button:hover {
-    background-color: #040e7f; /* Darker shade of blueviolet on hover */
+button:hover {
+    background-color: #040e7f; /* Darker shade on hover */
 }
 
-/* Style for chat page */
-#chatContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 90vh; /* Increased height of chat container */
-    animation: fade-in 0.5s ease-in-out;
-}
-
+/* Message Containers */
 .messages {
     overflow-y: auto;
-    max-height: 80vh; /* Increased max height of messages container */
+    max-height: 60vh;
     width: 100%;
     padding: 1rem;
-    background-color: #222; /* Darker background for messages in dark mode */
+    background-color: #f0f0f0; /* Light gray background for messages */
     border-radius: 10px;
     margin-bottom: 1rem;
-    animation: fade-in 0.5s ease-in-out;
+}
+
+.msgCtn, .otherMsgCtn {
+    margin-bottom: 10px;
+    max-width: 90%;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    word-wrap: break-word;
 }
 
 .msgCtn {
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border-radius: 10px;
-    background-color: #364be5; /* blueviolet */
-    color: #fff; /* White text color for user's messages */
-    font-size: 1.6rem;
-    max-width: 70%;
-    word-wrap: break-word;
-    align-self: flex-end; /* Right-align user's messages */
-    animation: fade-in 0.5s ease-in-out;
+    background-color: var(--primary-color);
+    color: #fff;
+    margin-left: auto;
 }
 
 .otherMsgCtn {
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border-radius: 10px;
-    background-color: #555; /* Darker background for other users' messages */
-    color: #fff; /* White text color for other users' messages */
-    font-size: 1.6rem;
-    max-width: 70%;
-    word-wrap: break-word;
-    align-self: flex-start; /* Left-align other users' messages */
-    animation: fade-in 0.5s ease-in-out;
+    background-color: #ccc; /* Lighter gray for other messages */
+    color: #333;
+    margin-right: auto;
 }
 
-.msgForm {
-    display: flex;
-    flex-direction: column; /* تغییر جهت flex به عمودی */
-    align-items: center;
-    width: 100%;
-    margin-top: 4rem; /* Increased margin top */
-    animation: fade-in 0.5s ease-in-out;
-}
-
-.input {
-    flex: 1;
-    padding: 1rem;
-    font-size: 1.6rem;
-    border-radius: 5px;
-    border: 1px solid #364be5; /* blueviolet */
-    transition: background-color 0.3s ease-in-out;
-    background-color: #444; /* Darker background for input in dark mode */
-    color: #fff; /* White text color for input in dark mode */
-    margin-bottom: 1rem; /* افزودن فاصله بین تکست باکس و دکمه */
-    width: 100%; /* عرض تکست باکس برابر با صفحه */
-    box-sizing: border-box; /* محاسبه عرض با در نظر گرفتن حاشیه و پس‌زمینه */
-}
-
-
-.input:focus {
-    outline: none;
-    border-color: #364be5; /* blueviolet */
-    background-color: #333; /* Slightly darker background on focus in dark mode */
-}
-
-.btn {
-    padding: 1rem 0; /* حذف پدینگ افقی و اعمال پدینگ بعدی برای تنظیم عرض */
-    font-size: 1.6rem;
-    border-radius: 5px;
-    background-color: #364be5; /* blueviolet */
-    color: #fff; /* White text color for button */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    width: 100%; /* عرض دکمه برابر با صفحه */
-    box-sizing: border-box; /* محاسبه عرض با در نظر گرفتن حاشیه و پس‌زمینه */
-}
-
-.btn:hover {
-    background-color: #040e7f; /* Darker shade of blueviolet on hover */
-}
-
-/* Animation keyframes */
-@keyframes fade-in {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .msgCtn, .otherMsgCtn {
+        max-width: 80%;
     }
 }
 
+@media only screen and (max-width: 480px) {
+    .msgCtn, .otherMsgCtn {
+        max-width: 100%;
+    }
+
+    input, textarea {
+        font-size: 1.4rem;
+    }
+
+    button {
+        font-size: 1.4rem;
+    }
+}
