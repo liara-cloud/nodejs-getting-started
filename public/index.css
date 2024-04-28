@@ -1,57 +1,149 @@
-html{
-    font-size: 62.5%;
-    }
-    body{
-    margin:0;
-    padding: 0;
-    display:flex;
-    justify-content:center;
-    }
-    .container{
-    margin-top: 5rem;
-    display:flex;
-    flex-direction:column;
-    width: 30%;
-    height: 70vh;
-    }
-    .msg{
-    color:blueviolet;
+/* Font styles */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #fff; /* White text color for dark mode */
+    background-color: #333; /* Dark background color for dark mode */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Style for username input page */
+#usernameForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10rem;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+#usernameForm label {
     font-size: 2rem;
-    }
-    .msgCtn{
-    margin: 1rem 0;
-    color: white;
-    padding: 1rem 1rem;
-    background-color: blueviolet;
-    border-radius: 6px;
-    font-size: 2rem
-    }
-    .msgForm{
-    display:flex;
-    flex-direction:row;
-    }
-    .input{
-    height: 100%;
-    flex: 4;
-    margin-right: 2rem;
-    border:none;
-    border-radius: .5rem;
-    padding: 2px 1rem;
-    font-size: 1.5rem;
-    background-color:aliceblue;
-    }
-    .input:focus{
-    background-color:white;
-    }
-    .btn{
-    height:5rem;
-    flex: 1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius: .5rem;
-    background-color:blueviolet;
-    color: whitesmoke;
-    border:none;
+    margin-bottom: 1rem;
+}
+
+#usernameForm input {
+    padding: 1rem;
     font-size: 1.6rem;
+    border-radius: 5px;
+    border: 1px solid #8a2be2; /* blueviolet */
+    margin-bottom: 2rem; /* Increased margin bottom */
+    background-color: #444; /* Darker background for input in dark mode */
+    color: #fff; /* White text color for input in dark mode */
+}
+
+#usernameForm button {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    background-color: #8a2be2; /* blueviolet */
+    color: #fff; /* White text color for button */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#usernameForm button:hover {
+    background-color: #6b1d9d; /* Darker shade of blueviolet on hover */
+}
+
+/* Style for chat page */
+#chatContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh; /* Increased height of chat container */
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.messages {
+    overflow-y: auto;
+    max-height: 80vh; /* Increased max height of messages container */
+    width: 100%;
+    padding: 1rem;
+    background-color: #222; /* Darker background for messages in dark mode */
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.msgCtn {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #8a2be2; /* blueviolet */
+    color: #fff; /* White text color for user's messages */
+    font-size: 1.6rem;
+    max-width: 70%;
+    word-wrap: break-word;
+    align-self: flex-end; /* Right-align user's messages */
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.otherMsgCtn {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #555; /* Darker background for other users' messages */
+    color: #fff; /* White text color for other users' messages */
+    font-size: 1.6rem;
+    max-width: 70%;
+    word-wrap: break-word;
+    align-self: flex-start; /* Left-align other users' messages */
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.msgForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem; /* Increased margin top */
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.input {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    border: 1px solid #8a2be2; /* blueviolet */
+    transition: background-color 0.3s ease-in-out;
+    background-color: #444; /* Darker background for input in dark mode */
+    color: #fff; /* White text color for input in dark mode */
+}
+
+.input:focus {
+    outline: none;
+    border-color: #8a2be2; /* blueviolet */
+    background-color: #333; /* Slightly darker background on focus in dark mode */
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    background-color: #8a2be2; /* blueviolet */
+    color: #fff; /* White text color for button */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #6b1d9d; /* Darker shade of blueviolet on hover */
+}
+
+/* Animation keyframes */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

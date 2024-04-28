@@ -10,47 +10,77 @@
 </head>
 
 <body>
-    <div class="container">
-        <p class="msg">Messages:</p>
-        <div id="messages" class="messages"></div>
-        <form id="msgForm" class="msgForm">
-            <input type="text" placeholder="Send message" class="input" id="inputBox" />
-            <input type="submit" class="btn" value="Send">
-        </form>
+    <!-- Form for entering username -->
+    <div id="usernameForm">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" placeholder="Username">
+        <button onclick="submitUsername()">Submit</button>
     </div>
+
+    <!-- Chat container -->
+    <div id="chatContainer" style="display: none;">
+        <div class="container">
+            <p class="msg">Messages:</p>
+            <div id="messages" class="messages"></div>
+            <form id="msgForm" class="msgForm">
+                <input type="text" placeholder="Send message" class="input" id="inputBox" />
+                <input type="submit" class="btn" value="Send">
+            </form>
+        </div>
+    </div>
+
     <script type="text/javascript">
-        const ws = new WebSocket(`ws://${window.document.location.host}`);
-        ws.binaryType = "blob";
-        // Log socket opening and closing
-        ws.addEventListener("open", event => {
-            console.log("Websocket connection opened");
-        });
-        ws.addEventListener("close", event => {
-            console.log("Websocket connection closed");
-        });
-        ws.onmessage = function (message) {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('msgCtn');
-            if (message.data instanceof Blob) {
-                reader = new FileReader();
-                reader.onload = () => {
-                    msgDiv.innerHTML = reader.result;
-                    document.getElementById('messages').appendChild(msgDiv);
+        let ws;
+
+        function submitUsername() {
+            const usernameInput = document.getElementById('username');
+            const username = usernameInput.value.trim();
+            if (username) {
+                // Connect to WebSocket server
+                ws = new WebSocket(`ws://${window.document.location.host}?username=${encodeURIComponent(username)}`);
+                ws.binaryType = "blob";
+
+                // Handle socket events
+                ws.addEventListener("open", event => {
+                    console.log("Websocket connection opened");
+                    // Show chat container after connection
+                    document.getElementById('usernameForm').style.display = 'none';
+                    document.getElementById('chatContainer').style.display = 'block';
+                });
+                ws.addEventListener("close", event => {
+                    console.log("Websocket connection closed");
+                });
+
+                // Handle incoming messages
+                ws.onmessage = function (message) {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.classList.add('msgCtn');
+                    if (message.data instanceof Blob) {
+                        reader = new FileReader();
+                        reader.onload = () => {
+                            msgDiv.innerHTML = reader.result;
+                            document.getElementById('messages').appendChild(msgDiv);
+                        };
+                        reader.readAsText(message.data);
+                    } else {
+                        console.log("Result2: " + message.data);
+                        msgDiv.innerHTML = message.data;
+                        document.getElementById('messages').appendChild(msgDiv);
+                    }
                 };
-                reader.readAsText(message.data);
+
+                // Handle form submission
+                const form = document.getElementById('msgForm');
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const message = document.getElementById('inputBox').value;
+                    ws.send(message);
+                    document.getElementById('inputBox').value = ''
+                });
             } else {
-                console.log("Result2: " + message.data);
-                msgDiv.innerHTML = message.data;
-                document.getElementById('messages').appendChild(msgDiv);
+                alert('Please enter a valid username.');
             }
         }
-        const form = document.getElementById('msgForm');
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const message = document.getElementById('inputBox').value;
-            ws.send(message);
-            document.getElementById('inputBox').value = ''
-        })
     </script>
 </body>
 
