@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
     font-size: 1.6rem;
     border-radius: 5px;
-    border: 1px solid #8a2be2; /* blueviolet */
+    border: 1px solid #364be5; /* blueviolet */
     margin-bottom: 2rem; /* Increased margin bottom */
     background-color: #444; /* Darker background for input in dark mode */
     color: #fff; /* White text color for input in dark mode */
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem 2rem;
     font-size: 1.6rem;
     border-radius: 5px;
-    background-color: #8a2be2; /* blueviolet */
+    background-color: #364be5; /* blueviolet */
     color: #fff; /* White text color for button */
     border: none;
     cursor: pointer;
@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #usernameForm button:hover {
-    background-color: #6b1d9d; /* Darker shade of blueviolet on hover */
+    background-color: #040e7f; /* Darker shade of blueviolet on hover */
 }
 
 /* Style for chat page */
@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0.5rem 0;
     padding: 1rem;
     border-radius: 10px;
-    background-color: #8a2be2; /* blueviolet */
+    background-color: #364be5; /* blueviolet */
     color: #fff; /* White text color for user's messages */
     font-size: 1.6rem;
     max-width: 70%;
@@ -97,10 +97,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .msgForm {
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* تغییر جهت flex به عمودی */
     align-items: center;
     width: 100%;
-    margin-top: 2rem; /* Increased margin top */
+    margin-top: 4rem; /* Increased margin top */
     animation: fade-in 0.5s ease-in-out;
 }
 
@@ -109,31 +109,37 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
     font-size: 1.6rem;
     border-radius: 5px;
-    border: 1px solid #8a2be2; /* blueviolet */
+    border: 1px solid #364be5; /* blueviolet */
     transition: background-color 0.3s ease-in-out;
     background-color: #444; /* Darker background for input in dark mode */
     color: #fff; /* White text color for input in dark mode */
+    margin-bottom: 1rem; /* افزودن فاصله بین تکست باکس و دکمه */
+    width: 100%; /* عرض تکست باکس برابر با صفحه */
+    box-sizing: border-box; /* محاسبه عرض با در نظر گرفتن حاشیه و پس‌زمینه */
 }
+
 
 .input:focus {
     outline: none;
-    border-color: #8a2be2; /* blueviolet */
+    border-color: #364be5; /* blueviolet */
     background-color: #333; /* Slightly darker background on focus in dark mode */
 }
 
 .btn {
-    padding: 1rem 2rem;
+    padding: 1rem 0; /* حذف پدینگ افقی و اعمال پدینگ بعدی برای تنظیم عرض */
     font-size: 1.6rem;
     border-radius: 5px;
-    background-color: #8a2be2; /* blueviolet */
+    background-color: #364be5; /* blueviolet */
     color: #fff; /* White text color for button */
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+    width: 100%; /* عرض دکمه برابر با صفحه */
+    box-sizing: border-box; /* محاسبه عرض با در نظر گرفتن حاشیه و پس‌زمینه */
 }
 
 .btn:hover {
-    background-color: #6b1d9d; /* Darker shade of blueviolet on hover */
+    background-color: #040e7f; /* Darker shade of blueviolet on hover */
 }
 
 /* Animation keyframes */
@@ -147,3 +153,4 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateY(0);
     }
 }
+
