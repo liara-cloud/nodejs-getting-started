@@ -37,6 +37,6 @@ wss.on('connection', (client, req) => {
     });
 });
 
-server.listen(process.argv[2] || 8080, () => {
+server.listen(process.argv[2] || 3000, () => {
     console.log(`Server listening...`);
 });

@@ -37,7 +37,7 @@
             const username = usernameInput.value.trim();
             if (username) {
                 // Connect to WebSocket server
-                ws = new WebSocket(`ws://${window.document.location.host}?username=${encodeURIComponent(username)}`);
+                ws = new WebSocket(`wss://${window.document.location.host}?username=${encodeURIComponent(username)}`);
                 ws.binaryType = "blob";
 
                 // Handle socket events
