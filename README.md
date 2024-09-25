@@ -13,7 +13,7 @@ git checkout email-server
 npm i
 ```
 ```
-mv .env.example # and set your ENVs
+mv .env.example .env # and set your ENVs
 ```
 ```
 node sendEmail.js
