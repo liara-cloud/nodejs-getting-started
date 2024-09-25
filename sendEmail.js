@@ -1,33 +1,38 @@
-// Importing the packages
+// Import required packages
 const nodemailer = require('nodemailer');
-require('dotenv').config();
+const dotenv = require('dotenv'); // in local, run `npm install dotenv` if needed
 
-// loading env variables
-const { MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASSWORD } = process.env;
+// Load environment variables from .env file
+dotenv.config();
 
-// setting smtp
+// Create reusable transporter object using the SMTP transport
 const transporter = nodemailer.createTransport({
-    host: MAIL_HOST,
-    port: MAIL_PORT,
-    secure: false,
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    secure: false, // true for 465, false for other ports (587 in this case for STARTTLS)
     auth: {
-        user: MAIL_USER,
-        pass: MAIL_PASSWORD
-    }
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD
+    },
+
 });
 
-//  email info
+// Email options
 const mailOptions = {
-    from: 'example@example.com',   
-    to: 'user@userdomain.com',
-    subject: 'Hello',
-    text: 'Hello from Node.js!'
+    from: `"my app" <${process.env.MAIL_FROM}>`, // Sender address
+    to: 'test@example.com', // List of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from Node.js', // Plain text body
+    html: '<b>This is a test email sent from Node.js</b>', // HTML body
+    headers: {
+      "x-liara-tag": "test_email", // Tags 
+    },
 };
 
-// sending email 
+// Send email
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-        return console.error(error);
+        return console.log('Error occurred: ' + error.message);
     }
-    console.log('Message sent: %s', info.messageId);
+    console.log('Email sent: ' + info.response);
 });

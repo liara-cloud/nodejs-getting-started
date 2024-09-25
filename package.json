@@ -1,15 +1,6 @@
 {
-  "name": "node-getting-started",
-  "version": "1.0.0",
-  "description": "simple web server with expressjs",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.3.1",
-    "express": "^4.17.1",
-    "nodemailer": "^6.9.5"
+    "dotenv": "^16.4.5",
+    "nodemailer": "^6.9.15"
   }
 }
