@@ -1,18 +1,26 @@
 {
-  "name": "prisma-example",
+  "name": "prisma-liara",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx prisma generate",
-    "start": "node app.js"
-  },
+"scripts": {
+    "build": "npx prisma generate && tsc",
+    "start": "node dist/src/server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "prisma": "^7.2.0",
+    "typescript": "^5.9.3"
+  },
   "dependencies": {
-    "@prisma/client": "^5.12.1",
-    "express": "^4.19.2"
+    "@faker-js/faker": "^10.1.0",
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "express": "^5.2.1"
   }
 }
